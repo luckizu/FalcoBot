@@ -15,7 +15,7 @@ JDA Falcobot;
 Botmomentaneo(){
 
     try {
-        Falcobot = new JDABuilder("NTcwOTI0NzUxNDAxMjU0OTEz.XvNfDQ.MqRgXe-rkl9VuwQJ5LKpVLguncI").build();
+        Falcobot = new JDABuilder("NTcwOTI0NzUxNDAxMjU0OTEz.XvSAyw.joay5F2nYjHdPXZqagWDH_nxo_M").build();
 
 
        // Falcobot.addEventListener(new ComandiLocale());
