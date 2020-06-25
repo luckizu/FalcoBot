@@ -1,0 +1,6 @@
+.gradle/
+build/
+gradle/
+out/artifacts/FalcoBot_it_main_jar/FalcoBot.it.main.jar
+out/production/resources/falcobot.png
+DataBase - Copia.dat
