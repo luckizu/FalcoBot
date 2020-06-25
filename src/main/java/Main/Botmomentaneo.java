@@ -4,6 +4,7 @@ import FalcoBot.Comandi.Comandi;
 import FalcoBot.Comandi.ComandiLocale;
 import FalcoBot.Eventi.IconRecieved;
 import FalcoBot.Eventi.casdo;
+import FalcoBot.SetBot;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 
@@ -15,8 +16,8 @@ JDA Falcobot;
 Botmomentaneo(){
 
     try {
-        Falcobot = new JDABuilder("NTcwOTI0NzUxNDAxMjU0OTEz.XvSAyw.joay5F2nYjHdPXZqagWDH_nxo_M").build();
-
+        Falcobot = new JDABuilder(new SetBot().GetBotToken()).build();
+      //  Falcobot = new JDABuilder("NTcwOTI0NzUxNDAxMjU0OTEz.XvSE-A.MzSQnpd03LJs5t5vTulHZ020zq4").build();
 
        // Falcobot.addEventListener(new ComandiLocale());
        // Falcobot.addEventListener(new IconRecieved());
@@ -28,7 +29,7 @@ Botmomentaneo(){
 
 
     } catch (LoginException e) {
-        e.printStackTrace();
+        System.out.println("errore");
     }
 
 
