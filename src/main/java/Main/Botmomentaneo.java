@@ -17,7 +17,6 @@ Botmomentaneo(){
 
     try {
         Falcobot = new JDABuilder(new SetBot().GetBotToken()).build();
-      //  Falcobot = new JDABuilder("NTcwOTI0NzUxNDAxMjU0OTEz.XvSE-A.MzSQnpd03LJs5t5vTulHZ020zq4").build();
 
        // Falcobot.addEventListener(new ComandiLocale());
        // Falcobot.addEventListener(new IconRecieved());
