@@ -21,17 +21,5 @@ public class Join extends ListenerAdapter {
 
      e.getGuild().getDefaultChannel().sendMessage(Emb.build()).queue();
 
-        String[] SDATA = new String[3];
-        int[] NDATA = {1, 0};
-
-        SDATA[0] = e.getMember().getUser().getName();
-        SDATA[1] = e.getMember().getUser().getId();
-       // SDATA[2] = e.getGuild().getRoles().toString();
-        SDATA[2] = "Fiocchetto";
-
-        Utenti UT = new Utenti(SDATA[0], SDATA[1], SDATA[2], NDATA[0], NDATA[1]);
-        InserimentoUtenti INS = new InserimentoUtenti();
-        INS.Inserisci(UT.ToString());
-
     }
 }

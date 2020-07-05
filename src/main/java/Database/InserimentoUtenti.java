@@ -1,166 +1,52 @@
 package Database;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class InserimentoUtenti {
-    String Utente;
-
-    public static void Inserisci(String Utente) {
-
-        String[] caso = new String[1000000000];
 
 
-        int x = 0;
-        caso[x] = "caso";
-        String dio = "caso";
-        try {
-            FileInputStream IN = new FileInputStream("DataBase.dat");
-            try {
-                ObjectInputStream Lett = new ObjectInputStream(IN);
+    String ruolo = "Fiocco";
+    int lvl = 0;
+    int exp = 0;
+    int cout = 0;
+    List<Utenti> Membri = new ArrayList<Utenti>();
+    public InserimentoUtenti(String Utente, String id) {
 
-
-                while (dio != null) {
-
-
-                    dio = Lett.readUTF();
-                    System.out.println(dio);
-                    caso[x] = dio;
-                    x++;
-
-                }
-
-
-                Lett.close();
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-
-
-        } catch (IOException e) {
-            System.out.println("erorrro");
-        }
-        caso[x] = Utente;
-        System.out.println(caso[2]);
-        System.out.println(caso[0] + caso[1]);
 
         try {
-            ObjectOutputStream Scrit = new ObjectOutputStream(new FileOutputStream("DataBase.dat"));
+            FileInputStream File = new FileInputStream(new DatabasePath().getPath());
 
-            x = 0;
-            String merda = "caso";
-            while (merda != null) {
-                merda = caso[x];
-                System.out.println(caso[x]);
-                if (merda != null) {
-                    try {
-                        Scrit.writeUTF(merda);
-                    } catch (IOException ex) {
-                        System.out.println("error");
-                    }
-                }
+            ObjectInputStream IN = new ObjectInputStream(File);
 
-                x++;
+            System.out.println("Lettura");
+            for(int x= 0; x<=File.available(); x++){
+
+                Membri.add((Utenti) IN.readObject()) ;
+                System.out.println(Membri.get(x).Nome);
+
             }
+            IN.close();
 
-            Scrit.close();
+            Membri.add(new Utenti(Utente, id, "ChinaAuuupa", 1, 0));
+            FileOutputStream File1 = new FileOutputStream(new DatabasePath().getPath());
+            ObjectOutputStream Out = new ObjectOutputStream(File1);
+            System.out.println("Scrittura");
+            for ( int x = 0; x<=Membri.size(); x++  ){
 
-        } catch (IOException e) {
-            System.out.println("diocane");
-        }
+                Out.writeObject( Membri.get(x));
 
-    }
-
-    public static void Cambio(String NuovoNome, String VecchioNome){
-    int count = 0;
-    String[] Nome = new String[5];
-    String Utente1;
-        try {
-
-            FileInputStream IN = new FileInputStream("DataBase.dat");
-
-            try {
-
-                ObjectInputStream Lett = new ObjectInputStream(IN);
-
-                while (Nome[0] != VecchioNome){
-
-                    Utente1 = Lett.readUTF();
-                    Nome = Utente1.split(" ");
-                    count++;
-
-
-                }
-                Lett.close();
-
-            } catch (IOException e) {
-                e.printStackTrace();
             }
-        } catch (FileNotFoundException e) {
+            System.out.println("Scritto");
+            Out.close();
+
+
+
+
+    } catch (IOException | ClassNotFoundException e){
             e.printStackTrace();
+
         }
-        Utenti CAMBIO = new Utenti(NuovoNome, Nome[1], Nome[2], Integer.parseInt(Nome[3]), Integer.parseInt(Nome[4]));
-
-        String[] caso = new String[1000000000];
-
-
-        int x = 0;
-        caso[x] = "caso";
-        String dio = "caso";
-        try {
-            FileInputStream IN = new FileInputStream("DataBase.dat");
-            try {
-                ObjectInputStream Lett = new ObjectInputStream(IN);
-
-
-                while (Lett.readBoolean()) {
-
-
-                    dio = Lett.readUTF();
-                    System.out.println(dio);
-                    caso[x] = dio;
-                    x++;
-
-                }
-
-
-                Lett.close();
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-
-
-        } catch (IOException e) {
-            System.out.println("erorrro");
-        }
-        caso[count] = CAMBIO.ToString();
-
-        try {
-            ObjectOutputStream Scrit = new ObjectOutputStream(new FileOutputStream("DataBase.dat"));
-
-            x = 0;
-            String merda = "caso";
-            while (merda != null) {
-                merda = caso[x];
-
-                if (merda != null) {
-                    try {
-                        Scrit.writeUTF(merda);
-                    } catch (IOException ex) {
-
-                    }
-                }
-
-                x++;
-            }
-
-            Scrit.close();
-
-        } catch (IOException e) {
-            System.out.println("diocane");
-        }
-
-    }
-
-    }
-
-
+}
+}

@@ -18,11 +18,6 @@ public class Leave extends ListenerAdapter {
 
 
         e.getGuild().getDefaultChannel().sendMessage(Emb.build()).queue();
-      /* try {
-           Data4Contain.LeaveExcution(e.getMember().getUser().getName());
-       } catch (IOException z){
-           System.out.println("errore");
-       }*/
     }
 
 }

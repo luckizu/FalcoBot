@@ -1,6 +1,8 @@
 package Database;
 
-public class Utenti {
+import java.io.Serializable;
+
+public class Utenti implements Serializable {
     String Nome, id, ruolo;
     int Livello, experienza;
 

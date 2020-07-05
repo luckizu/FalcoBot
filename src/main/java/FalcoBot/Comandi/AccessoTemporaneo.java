@@ -1,4 +1,4 @@
-package FalcoBot.Eventi;
+package FalcoBot.Comandi;
 
 import net.dv8tion.jda.api.entities.Role;
 import net.dv8tion.jda.api.events.guild.voice.GuildVoiceLeaveEvent;
@@ -8,7 +8,7 @@ import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
 import java.util.Collection;
 
-public class casdo extends ListenerAdapter {
+public class AccessoTemporaneo extends ListenerAdapter {
     String Messaggio;
     String Emote;
     String id;
@@ -64,9 +64,6 @@ public class casdo extends ListenerAdapter {
 
             } else if (Messaggio1.equals("/giphy") || Messaggio1.equals("/tenor") || Messaggio1.equals("/tts") || Messaggio1.equals("/me") || Messaggio1.equals("/tableflip") || Messaggio1.equals("/unflip") || Messaggio1.equals("/shrug") || Messaggio1.equals("/spoiler") || Messaggio1.equals("/nick")) {
 
-
-            } else {
-                e.getChannel().sendMessage("Comando errato").queue();
 
             }
 

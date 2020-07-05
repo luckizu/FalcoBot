@@ -1,18 +1,30 @@
 package Main;
 
-import FalcoBot.BOTmain;
 
-import java.awt.*;
+import Database.DatabasePath;
+import Database.Utenti;
+
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 
 public class Main {
         public static void main(String std[]){
-        /*    BOTmain FalcoBot = new BOTmain();
-            FalcoBot.StartBot();
-*/
 
 
+try {
+    ObjectOutputStream caso = new ObjectOutputStream(new FileOutputStream(new DatabasePath().getPath()));
 
-        Botmomentaneo Test = new Botmomentaneo();
+    caso.writeObject((Utenti) new Utenti("caso", "dio", "dad", 4 , 5));
+
+
+} catch (IOException e) {
+    e.printStackTrace();
+}
+
+            // ManualImput MI = new ManualImput();
+           BOTmain BOT = new BOTmain();
         Backgroun back = new Backgroun();
         }
 

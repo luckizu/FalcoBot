@@ -1,46 +1,37 @@
 package FalcoBot.Comandi;
 
-import Ranking.RankingSystem;
+import Database.OttenimentoLivelli;
+import Database.OttenimentoUtenti;
+
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class CreateEMB {
 
-    String TITOLO;
-    String[] Descizioneauto;
+List<String > EMB = new ArrayList<String>();
+ public CreateEMB(String Nome){
+            OttenimentoUtenti OTT = new OttenimentoUtenti(Nome);
+           OttenimentoLivelli LVL = new OttenimentoLivelli(OTT.getLvl());
+String lvl = OTT.getLvl() +"" ;
 
- public static String[] EMBauto(String TITOLO, String[] DATA){
+             EMB.add("Queste sono le tue statistiche");
+             EMB.add("Nome");
+             EMB.add(OTT.getNome());
+             EMB.add("Id");
+             EMB.add(OTT.getid());
+             EMB.add("Nome d'arte");
+             EMB.add(LVL.getRuolo());
+             EMB.add("Livello");
+             EMB.add(lvl);
+             EMB.add("Exp");
+             EMB.add(OTT.getexp()+ "/"+ LVL.getMaxExp());
 
-     switch (TITOLO){
+}
 
-         case "/stat":
-             int[] Max = RankingSystem.LevellMAX() ;
-
-             String MaxLvl = String.valueOf(Max[Integer.parseInt(DATA[3])]);
-
-             String Des = "Nome: " + DATA[0] + "       " + "Id: " + DATA[1] + "        " + "Nome d'arte: " + DATA[2]
-                     + "\n" + "Livello: " +DATA[3]  + "        Punti: " + DATA[4] + "/" + MaxLvl;
-             String Title = "Queste sono le tue statiche";
-             String[] EMB = new String[2];
-             EMB[0] = Title;
-             EMB[1] = Des;
-        return EMB;
-
-         case "/help":
-                int x = 0;
-             Title = "Questi sono i comandi";
-             String des = null;
-             while (DATA[x] != null){
-                 des = des + DATA[x];
-                 x++;
-                 des = des + ": " + DATA[x];
-                 x++;
+public List<String> GetEMBauto(){
 
 
-             }
-            String[] Emb = new String[2];
-             Emb[0] = Title;
-             Emb[1] = des;
-             return Emb;
-     }
-    return null;
+ return this.EMB;
  }
 }
