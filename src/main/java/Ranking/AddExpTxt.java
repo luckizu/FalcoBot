@@ -22,7 +22,7 @@ public class AddExpTxt {
         OttenimentoLivelli OL = new OttenimentoLivelli(OU.getLvl());
 
         this.lvl = OU.getLvl();
-        this.exp = OU.getexp() + 100;
+        this.exp = OU.getexp() + 1;
         this.MaxExp = OL.getMaxExp();
         this.id = OU.getid();
         this.Ruolo = OL.getRuolo();
