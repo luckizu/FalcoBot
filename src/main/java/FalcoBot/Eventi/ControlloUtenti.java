@@ -15,13 +15,11 @@ public class ControlloUtenti extends ListenerAdapter {
     String id;
 
     public void onUserUpdateOnlineStatus (UserUpdateOnlineStatusEvent e){
-       if(e.getMember().getNickname() == null){
+
            this.Utente = e.getMember().getEffectiveName();
 
-       } else {
 
-           this.Utente = e.getMember().getNickname();
-       }
+
         this.id = e.getMember().getId();
         System.out.println(this.Utente);
         if(new DatabasePath().getPath().exists()){

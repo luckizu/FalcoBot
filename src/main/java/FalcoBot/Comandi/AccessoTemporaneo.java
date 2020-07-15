@@ -21,7 +21,7 @@ public class AccessoTemporaneo extends ListenerAdapter {
     String[] Concessi = new String[10];
     int cout = 0;
     public void onGuildMessageReactionAdd(GuildMessageReactionAddEvent e) {
-        if (e.getUser().getName().equals("OlBelo") || e.getUser().getName().equals("Gek Sparro") || e.getUser().getName().equals("Luckizu")) {
+        if (e.getUser().getName().equals("OlBelo") || e.getUser().getName().equals("gekrek") || e.getUser().getName().equals("Luckizu")) {
             if (Messaggio.equals(Utente + " ha richiesto di collegarsi al canale I rapaci")) {
                 this.Fan = e.getGuild().getRolesByName("Fan del Rapacio", false).get(0);
                 this.Emote = e.getReactionEmote().getId();

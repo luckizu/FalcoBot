@@ -3,9 +3,10 @@ package Database;
 import java.io.Serializable;
 
 public class Utenti implements Serializable {
-    String Nome, id, ruolo;
-    int Livello, experienza;
-
+    public String Nome;
+   public   String id, ruolo;
+   public int Livello, experienza;
+    private static final long serialVersionUID = -4704511417355895239L;
     public Utenti (String Nome, String id, String ruolo, int Livello, int experienza){
 
         this.Nome = Nome;

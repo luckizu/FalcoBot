@@ -12,7 +12,7 @@ import java.io.ObjectOutputStream;
 public class Main {
         public static void main(String std[]){
 
-
+/*
 try {
     ObjectOutputStream caso = new ObjectOutputStream(new FileOutputStream(new DatabasePath().getPath()));
 
@@ -22,10 +22,11 @@ try {
 } catch (IOException e) {
     e.printStackTrace();
 }
-
+*/
             // ManualImput MI = new ManualImput();
-           BOTmain BOT = new BOTmain();
-        Backgroun back = new Backgroun();
+            Backgroun back = new Backgroun();
+            BOTmain BOT = new BOTmain();
+
         }
 
 
