@@ -11,7 +11,7 @@ public class Voice extends ListenerAdapter {
     AggiornamentoVoice cs = new AggiornamentoVoice();
 
     public void onGuildVoiceJoin(GuildVoiceJoinEvent e) {
-        if(e.getChannelJoined().getName().equals("dioporco")){
+        if(e.getChannelJoined().getId().equals("570197389034651648")){
             System.out.println("canale afk");
         } else {
             Membri = e.getMember().getEffectiveName();
@@ -25,7 +25,7 @@ public class Voice extends ListenerAdapter {
 
 
     public void onGuildVoiceLeave(GuildVoiceLeaveEvent e) {
-        if(e.getChannelLeft().getName().equals("diocane")){
+        if(e.getChannelLeft().getId().equals("570197389034651648")){
 
         } else {
 

@@ -6,11 +6,13 @@ import FalcoBot.Comandi.Comandi;
 import Ranking.AddExpTxt;
 import javafx.concurrent.Task;
 import net.dv8tion.jda.api.EmbedBuilder;
+import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.api.events.message.guild.react.GuildMessageReactionAddEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 public class RecieveMessage  extends ListenerAdapter {
     String Utente;
@@ -62,14 +64,16 @@ public class RecieveMessage  extends ListenerAdapter {
                         Em.setDescription(Utente + " è salito al livello " + UT.getLvl() + " adesso sei un " + UT.getRuolo());
                         Em.setColor(0x3333ff);
                         e.getGuild().getDefaultChannel().sendMessage(Em.build()).queue();
-
+                        List<Message> ms = e.getChannel().getHistory().retrievePast(1).complete();
+                        ms.get(0).delete().queueAfter(10, TimeUnit.SECONDS);
 
                     } else {
                         Em.setTitle(Utente + " é salito di livello");
                         Em.setDescription(Utente + " è salito al livello " + UT.getLvl());
                         Em.setColor(0x3333ff);
-                        e.getGuild().getDefaultChannel().sendMessage(Em.build()).queue();
-
+                          e.getGuild().getDefaultChannel().sendMessage(Em.build()).queue();
+                        List<Message> ms = e.getChannel().getHistory().retrievePast(1).complete();
+                        ms.get(0).delete().queueAfter(10, TimeUnit.SECONDS);
 
                     }
 

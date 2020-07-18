@@ -7,7 +7,7 @@ public class LVLUP {
     public LVLUP(int lvl, int exp, int MaxExp){
         this.MaxExp = MaxExp;
         this.exp = exp;
-        if(MaxExp<=exp & lvl != 30){
+        if(MaxExp<=exp & lvl != 100){
 
           Salito = true;
 

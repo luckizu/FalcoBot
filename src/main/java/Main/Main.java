@@ -23,7 +23,7 @@ try {
     e.printStackTrace();
 }
 */
-            // ManualImput MI = new ManualImput();
+           //  ManualImput MI = new ManualImput();
             Backgroun back = new Backgroun();
             BOTmain BOT = new BOTmain();
 

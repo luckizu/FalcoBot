@@ -28,7 +28,7 @@ public class AddExpTxt {
         this.Ruolo = OL.getRuolo();
 
         LVLUP Up = new LVLUP(lvl,exp,MaxExp);
-        if(Up.getSalito() & lvl != 30){
+        if(Up.getSalito() & lvl != 100){
             this.exp = Up.getExpSup();
             System.out.println("Salito");
             System.out.println(exp+ "aggiuntiva");
@@ -37,7 +37,7 @@ public class AddExpTxt {
             AggiornamentoUtente ag = new AggiornamentoUtente(Nome, id, OT.getRuolo(), lvl, exp);
             System.out.println(OT.getRuolo() != Ruolo);
             this.Livellato = true;
-            if(lvl == 6 || lvl == 11 || lvl == 16 || lvl == 21 || lvl == 26 || lvl == 30){
+            if(lvl == 6 || lvl == 11 || lvl == 16 || lvl == 21 || lvl == 26 || lvl == 31 || lvl == 36 || lvl == 41 || lvl == 46 || lvl == 51 || lvl == 56 || lvl ==61 || lvl == 66 || lvl == 71 || lvl== 76 || lvl==81 || lvl== 86 || lvl == 91 || lvl == 96 || lvl == 100){
                 this.CambioRuolo = true;
 
             } else {
@@ -50,7 +50,7 @@ public class AddExpTxt {
         } else {
             this.Livellato = false;
 
-            if (lvl == 30) {
+            if (lvl == 100) {
                 System.out.println("Cap Massimo");
 
                 AggiornamentoUtente AG = new AggiornamentoUtente(Nome, id, Ruolo, lvl, MaxExp);

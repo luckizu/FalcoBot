@@ -1,6 +1,9 @@
 package Database;
 
+
+import Main.BOTmain;
 import Ranking.LVLUP;
+import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.entities.MessageEmbed;
 
 import java.io.*;
@@ -26,15 +29,18 @@ Timer timer;
 public void setMembri(String Membro){
 
     if(Started){
+        System.out.println("Gia partito");
         this.Membri.add(Membro);
         this.Tempi.put(Membro, time);
 
     } else {
        this.time = 0;
+       System.out.println("In partenza");
         this.Membri.add(Membro);
         this.Tempi.put(Membro, 0);
-        Start();
+
         this.Started = true;
+        Start();
     }
 }
 
@@ -44,13 +50,13 @@ private void Start(){
 
         @Override
         public void run() {
-            time = time+4;
+            time = time+10;
             List<Integer> TEM = new ArrayList<>();
             for(int x = 0; x<Membri.size(); x++){
                 TEM.add(time - Tempi.get(Membri.get(x)));
                 OttenimentoUtenti OU = new OttenimentoUtenti(Membri.get(x));
                 OttenimentoLivelli OL = new OttenimentoLivelli(OU.getLvl());
-
+                System.out.println(Membri.get(x)+ " Ha il tempo di " + TEM.get(x));
                 lvl = OU.getLvl();
                 exp = OU.getexp() + AddExp(TEM.get(x));
                 MaxExp = OL.getMaxExp();
@@ -58,7 +64,7 @@ private void Start(){
                 Ruolo = OL.getRuolo();
 
                 LVLUP Up = new LVLUP(lvl,exp,MaxExp);
-                if(Up.getSalito() & lvl != 30){
+                if(Up.getSalito() & lvl != 100){
                     exp = Up.getExpSup();
                     System.out.println("Salito");
                     System.out.println(exp+ "aggiuntiva");
@@ -67,7 +73,7 @@ private void Start(){
                     AggiornamentoUtente ag = new AggiornamentoUtente(Membri.get(x), id, OT.getRuolo(), lvl, exp);
                     System.out.println(OT.getRuolo() != Ruolo);
                     Livellato = true;
-                    if(lvl == 6 || lvl == 11 || lvl == 16 || lvl == 21 || lvl == 26 || lvl == 30){
+                    if(lvl == 6 || lvl == 11 || lvl == 16 || lvl == 21 || lvl == 26 || lvl == 31 || lvl == 36 || lvl == 41 || lvl == 46 || lvl == 51 || lvl == 56 || lvl ==61 || lvl == 66 || lvl == 71 || lvl== 76 || lvl==81 || lvl== 86 || lvl == 91 || lvl == 96 || lvl == 100){
                         Print(x);
                         Ruolo = OT.getRuolo();
                         System.out.println("true");
@@ -83,7 +89,7 @@ private void Start(){
                 } else {
                     Livellato = false;
 
-                    if (lvl == 30) {
+                    if (lvl == 100) {
                         System.out.println("Cap Massimo");
 
                         AggiornamentoUtente AG = new AggiornamentoUtente(Membri.get(x), id, Ruolo, lvl, MaxExp);
@@ -98,6 +104,7 @@ private void Start(){
                     }
 
                 }
+
             }
 
 
@@ -107,7 +114,7 @@ private void Start(){
 
 
     };
-    timer.scheduleAtFixedRate(task, 4000, 4000);
+    timer.scheduleAtFixedRate(task, 10000, 10000);
 
 
 }
@@ -133,33 +140,42 @@ int cout = 0;
 
     }
 
-    private int AddExp(int Time){
-    int exp;
-if(Time < 600) {
-    exp = 1;
-    return exp;
+    private int AddExp(int caso){
+    int EXP = 0;
+    System.out.println(caso);
+if(caso > 7200) {
+    EXP = 90;
+    System.out.println("EXP " + EXP);
 
-} else if(Time < 1.800) {
-    exp = 3;
-    return exp;
+    return EXP;
+} else if (caso > 3600) {
+        EXP = 45;
+        System.out.println("EXP " + EXP);
 
-} else if(Time < 3.600) {
-    exp = 8;
-    return exp;
+    return EXP;
+    } else if (caso > 1800){
 
-} else if(Time < 7.200) {
-    exp = 15;
-    return exp;
+            EXP = 24;
+            System.out.println("EXP " + EXP);
+    return EXP;
 
-} else {
+        } else if (caso > 600){
 
-    exp = 30;
-    return exp;
-}
+                EXP = 9;
+                System.out.println("EXP " + EXP);
+    return EXP;
 
+            } else {
 
+                EXP = 3;
+                System.out.println("EXP " + EXP);
+    return EXP;
+            }
 
     }
+
+
+
     public void Print(int x){
        try {
            FileOutputStream File = new FileOutputStream(new File("C:\\Users\\luckizu\\Documents\\FalcoBot\\caso.dat"));
@@ -168,7 +184,7 @@ if(Time < 600) {
            Out.writeUTF(Membri.get(x));
            String Livello = String.valueOf(lvl);
            Out.writeUTF(Livello);
-           if(lvl == 6 || lvl == 11 || lvl == 16 || lvl == 21 || lvl == 26 || lvl == 30){
+           if(lvl == 6 || lvl == 11 || lvl == 16 || lvl == 21 || lvl == 26 || lvl == 31 || lvl == 36 || lvl == 41 || lvl == 46 || lvl == 51 || lvl == 56 || lvl ==61 || lvl == 66 || lvl == 71 || lvl== 76 || lvl==81 || lvl== 86 || lvl == 91 || lvl == 96 || lvl == 100){
                System.out.println("vero");
                Out.writeUTF(this.Ruolo);
            } else {
@@ -185,6 +201,8 @@ if(Time < 600) {
        } catch (IOException e) {
            e.printStackTrace();
        }
+
+
     }
 
     }
